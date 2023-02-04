@@ -46,13 +46,13 @@ const App = () => {
         ? (
         <Loader />
           )
-        : user
-          ? (
+        : !user
+            ? (
         <ProtectedRoutes />
-            )
-          : (
+              )
+            : (
         <UnprotectedRoutes />
-            )}
+              )}
     </GlobalContext.Provider>
   )
 }

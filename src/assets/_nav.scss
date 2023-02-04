@@ -64,59 +64,6 @@
     a:hover, .active, .active:focus, li:hover > a  {
       color: var(--color-primary);
     }
-  
-    .dropdown {
-
-      a:hover:before, &:hover > a:before, .active:before  {
-        visibility: hidden;
-      }
-    
-      a:hover, .active, .active:focus, &:hover > a  {
-        color: var(--color-white);
-        background: var(--color-secondary);
-      }
-  
-      ul {
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 100%;
-        margin: 0;
-        padding: 0 0 10px 0;
-        z-index: 99;
-        opacity: 0;
-        visibility: hidden;
-        background: var(--color-secondary);
-        transition: 0.3s;
-        
-        li {
-          min-width: 200px;
-        }
-        
-        a {
-          padding: 10px 20px;
-          font-size: 15px;
-          text-transform: none;
-          font-weight: 400;
-          color: rgba(var(--color-white-rgb), .5);
-          i {
-            font-size: 12px;
-          }
-        }
-  
-        a:hover, .active, .active:hover, li:hover > a {
-          color: var(--color-white);
-          background: var(--color-primary);
-        }
-  
-      }
-  
-      &:hover > ul {
-        opacity: 1;
-        visibility: visible;
-      }
-      
-    }
     
     .megamenu {
       position: static;
@@ -140,31 +87,6 @@
       }
     }
   
-    .dropdown .dropdown {
-      
-      ul {
-        top: 0;
-        left: calc(100% - 30px);
-        visibility: hidden;
-      }
-  
-      &:hover > ul {
-        opacity: 1;
-        top: 0;
-        left: 100%;
-        visibility: visible;
-      }
-  
-      @media (max-width: 1366px) {
-        ul {
-          left: -90%;
-        }
-  
-        &:hover > ul {
-          left: -100%;
-        }
-      }
-    }
   
   }
 
@@ -216,23 +138,6 @@
       color: var(--color-white);
     }
   
-    .dropdown, .dropdown .dropdown {
-  
-      ul {
-        position: static;
-        display: none;
-        padding: 10px 0;
-        margin: 10px 20px;
-        transition: all .5s ease-in-out;
-        border: 1px solid rgba(var(--color-secondary-light-rgb), .3);
-      }
-
-
-      > .dropdown-active {
-        display: block;
-      }
-  
-    }
   
   }
 

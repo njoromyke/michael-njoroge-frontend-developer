@@ -1,12 +1,12 @@
-import { BrowserRouter as Router, Routes } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
+import CustomNav from '../../components/navbar/custom-nav'
 import RouteComponent from './routes'
 
 const ProtectedRoutes = () => {
   return (
-    <Router>
-      <Routes>
-        <RouteComponent />
-      </Routes>
+    <Router basename='/'>
+      <CustomNav />
+      <RouteComponent />
     </Router>
   )
 }
