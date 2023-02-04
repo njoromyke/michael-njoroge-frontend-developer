@@ -1,0 +1,138 @@
+.hero {
+  width: 100%;
+  min-height: 60vh;
+  padding: 0;
+  background: var(--color-black);
+  background: url('../../assets/images/hero-bg.png') center center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  padding: 140px 0 60px 0;
+
+  @media (max-width: 640px) {
+    .container {
+      padding: 0 60px;
+    }
+  }
+
+  .left-holder {
+    margin-top: 10rem;
+  }
+
+  h2 {
+    color: var(--color-secondary);
+    margin-bottom: 25px;
+    font-size: 48px;
+    font-weight: 300;
+    animation: fadeInDown 1s both 0.2s;
+
+    @media (max-width: 768px) {
+      font-size: 30px;
+    }
+  }
+
+  p {
+    color: var(--color-secondary-light);
+    animation: fadeInDown 1s both 0.4s;
+    font-weight: 500;
+    margin-bottom: 30px;
+  }
+
+  .img {
+    margin-bottom: 40px;
+    animation: fadeInDownLite 1s both;
+  }
+
+    .animated {
+    margin-bottom: 60px;
+    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+    @media (min-width: 992px) {
+      max-width: 45%;
+    }
+
+    @media (max-width: 991px) {
+      max-width: 60%;
+    }
+
+    @media (max-width: 575px) {
+      max-width: 80%;
+    }
+  }
+
+  .btn-get-started {
+    font-family: var(--font-secondary);
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 32px;
+    border-radius: 5px;
+    transition: 0.5s;
+    animation: fadeInUp 1s both 0.6s;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+
+    &:hover {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInDownLite {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}

@@ -1,0 +1,20 @@
+.data-section {
+  margin-top: 2rem;
+  .data-title {
+    margin: 3rem 0;
+  }
+
+  h4 {
+    font-size: 24px;
+    color: var(--color-primary);
+  }
+  .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--color-gray);
+    font-size: 14px;
+  }
+}

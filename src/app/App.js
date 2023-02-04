@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
+import Loader from '../components/loader/loader'
+import { getUserFromLocal } from '../helpers/utils/auth'
+import { DEFAULT_GLOBAL_STATE, GlobalContext } from './context/context'
+import ProtectedRoutes from './routes/protectedRoutes'
+import UnprotectedRoutes from './routes/unprotectedRoutes'
 
-function App() {
+const App = () => {
+  const [globalState, setGlobalState] = useState(DEFAULT_GLOBAL_STATE)
+  const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  const updateGlobalState = (obj) => {
+    setGlobalState({ ...globalState, ...obj })
+  }
+
+  const getUser = () => {
+    getUserFromLocal()
+      .then((user) => {
+        setUser(user)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id='main'>
+      <GlobalContext.Provider
+        value={{
+          globalState,
+          updateGlobalState
+        }}
+      >
+        <ToastContainer />
+        {loading
+          ? (
+          <Loader />
+            )
+          : user
+            ? (
+          <ProtectedRoutes />
+              )
+            : (
+          <UnprotectedRoutes />
+              )}
+      </GlobalContext.Provider>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

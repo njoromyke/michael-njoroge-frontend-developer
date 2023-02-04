@@ -4,6 +4,7 @@ const cors = require('cors')
 const db = require('./config/db')
 const userRoutes = require('./routes/userRoutes')
 const rocketRoutes = require('./routes/rocketRoutes')
+const { notFound, errorHandler } = require('./middleware/error')
 
 dotenv.config()
 
@@ -21,6 +22,9 @@ app.use(express.json())
 
 app.use('/api/users', userRoutes)
 app.use('/api/rockets', rocketRoutes)
+
+app.use(errorHandler)
+app.use(notFound)
 
 const PORT = process.env.PORT || 5000
 
