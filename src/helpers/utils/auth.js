@@ -5,6 +5,7 @@ export const getFromLocal = (itemName) => {
   if (!fromLocal) {
     return
   }
+
   return JSON.parse(fromLocal)
 }
 

@@ -12,7 +12,7 @@ const Hero = () => {
           <div className='row'>
             <div className='col-md-6 left-holder'>
               <div className='float-lg-start'>
-                <h2>Welcome to SpaceX Ships</h2>
+                <h2>Welcome to SpaceT Ships</h2>
                 <p>
                   We are here to provide you with the best ships in the world.
                 </p>

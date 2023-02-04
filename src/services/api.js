@@ -23,8 +23,9 @@ app.use(express.json())
 app.use('/api/users', userRoutes)
 app.use('/api/rockets', rocketRoutes)
 
-app.use(notFound)
 app.use(errorHandler)
+app.use(notFound)
+
 const PORT = process.env.PORT || 5000
 
 app.listen(

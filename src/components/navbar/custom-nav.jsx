@@ -5,7 +5,6 @@ const CustomNav = () => {
   const ref = useRef(null)
   const [showMobileMenu, setShowMobileMenu] = useState(false)
 
-  // apply class sticked to header when scroll
   useEffect(() => {
     const header = ref.current
     const sticky = header.offsetTop
@@ -35,7 +34,7 @@ const CustomNav = () => {
             to='/'
             className='logo d-flex align-items-center  me-auto me-lg-0'
           >
-            <h1>SpaceX</h1>
+            <h1>SpaceT</h1>
           </Link>
 
           <nav id='navbar' className='navbar'>

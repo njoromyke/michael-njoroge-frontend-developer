@@ -45,6 +45,22 @@
     animation: fadeInDownLite 1s both;
   }
 
+    .animated {
+    margin-bottom: 60px;
+    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+    @media (min-width: 992px) {
+      max-width: 45%;
+    }
+
+    @media (max-width: 991px) {
+      max-width: 60%;
+    }
+
+    @media (max-width: 575px) {
+      max-width: 80%;
+    }
+  }
+
   .btn-get-started {
     font-family: var(--font-secondary);
     font-weight: 400;
@@ -108,5 +124,15 @@
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
+  }
+}
+
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
   }
 }

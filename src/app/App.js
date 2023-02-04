@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
 import Loader from '../components/loader/loader'
 import { getUserFromLocal } from '../helpers/utils/auth'
 import { DEFAULT_GLOBAL_STATE, GlobalContext } from './context/context'
@@ -17,14 +18,8 @@ const App = () => {
   const getUser = () => {
     getUserFromLocal()
       .then((user) => {
-        if (user) {
-          setUser(user)
-          updateGlobalState({ user })
-          setLoading(false)
-        }
-
-        setUser(null)
-        setLoading(false)
+        console.log(user, 'Kama')
+        setUser(user)
       })
       .finally(() => {
         setLoading(false)
@@ -35,26 +30,29 @@ const App = () => {
     getUser()
   }, [])
 
+  console.log(user)
+
   return (
     <div id='main'>
       <GlobalContext.Provider
-      value={{
-        globalState,
-        setGlobalState
-      }}
-    >
-      {loading
-        ? (
-        <Loader />
-          )
-        : !user
+        value={{
+          globalState,
+          updateGlobalState
+        }}
+      >
+        <ToastContainer />
+        {loading
+          ? (
+          <Loader />
+            )
+          : user
             ? (
-        <ProtectedRoutes />
+          <ProtectedRoutes />
               )
             : (
-        <UnprotectedRoutes />
+          <UnprotectedRoutes />
               )}
-    </GlobalContext.Provider>
+      </GlobalContext.Provider>
     </div>
   )
 }
