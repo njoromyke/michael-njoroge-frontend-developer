@@ -27,9 +27,9 @@ const Register = () => {
         storeLocally(AUTH_USER, res.data)
         storeLocally(TOKEN, res.data.token)
         window.location.reload()
+        window.location.href = '/'
       })
       .catch((_err) => {
-        console.log(_err)
         showNotification(_err.response.data.message, 'error')
       })
 

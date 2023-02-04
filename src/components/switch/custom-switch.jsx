@@ -1,20 +1,18 @@
+import { Form } from 'react-bootstrap'
+
 /* eslint-disable react/prop-types */
 const CustomSwitch = ({ label, handleChange, name, ...otherProps }) => {
   return (
     <div>
       <div className='form-check form-switch'>
-        <input
-          {...otherProps}
-          className='form-check-input'
-          type='checkbox'
-          role='switch'
-          id='flexSwitchCheckDefault'
-          onChange={handleChange}
+        <Form.Check
+          type='switch'
+          label={label}
+          id='disabled-custom-switch'
           name={name}
+          onChange={handleChange}
+          {...otherProps}
         />
-        <label className='form-check-label' htmlFor='flexSwitchCheckDefault'>
-          {label}
-        </label>
       </div>
     </div>
   )

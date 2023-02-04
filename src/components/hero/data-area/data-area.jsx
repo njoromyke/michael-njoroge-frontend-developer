@@ -65,30 +65,18 @@ const DataArea = () => {
   useEffect(() => {
     if (filter.status) {
       setRockets(rockets.filter((rocket) => rocket.active))
-    } else {
-      getRockets()
     }
   }, [filter.status])
 
   useEffect(() => {
     if (filter.stage) {
-      setRockets(rockets.filter((rocket) => rocket.stage === filter.stage))
-    } else {
-      getRockets()
+      setRockets(
+        rockets.filter((rocket) => {
+          return parseInt(rocket.stages) === parseInt(filter.stage)
+        })
+      )
     }
   }, [filter.stage])
-
-  useEffect(() => {
-    if (filter.company) {
-      setRockets(
-        rockets.filter((rocket) =>
-          rocket.company.toLowerCase().includes(filter.company.toLowerCase())
-        )
-      )
-    } else {
-      getRockets()
-    }
-  }, [filter.company])
 
   const clearFilters = () => {
     setFilter({
@@ -188,16 +176,14 @@ const DataArea = () => {
 
         <div className='row mt-4'>
           {itemsToDisplay.map((rocket, index) => (
-            <>
-              <Rocket
-                key={index}
-                rocket={rocket}
-                onClick={() => {
-                  setSelectedRocket(rocket)
-                  setShowModal(true)
-                }}
-              />
-            </>
+            <Rocket
+              key={index}
+              rocket={rocket}
+              onClick={() => {
+                setSelectedRocket(rocket)
+                setShowModal(true)
+              }}
+            />
           ))}
         </div>
         <div className='col-md-12 mt-4'>

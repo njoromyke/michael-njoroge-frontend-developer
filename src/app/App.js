@@ -18,7 +18,6 @@ const App = () => {
   const getUser = () => {
     getUserFromLocal()
       .then((user) => {
-        console.log(user, 'Kama')
         setUser(user)
       })
       .finally(() => {
@@ -29,8 +28,6 @@ const App = () => {
   useEffect(() => {
     getUser()
   }, [])
-
-  console.log(user)
 
   return (
     <div id='main'>
