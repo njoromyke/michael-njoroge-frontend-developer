@@ -1,6 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import Loader from '../components/loader/loader'
 import { getUserFromLocal } from '../helpers/utils/auth'
 import { DEFAULT_GLOBAL_STATE, GlobalContext } from './context/context'
+import ProtectedRoutes from './routes/protectedRoutes'
+import UnprotectedRoutes from './routes/unprotectedRoutes'
 
 const App = () => {
   const [globalState, setGlobalState] = useState(DEFAULT_GLOBAL_STATE)
@@ -26,13 +29,29 @@ const App = () => {
       })
   }
 
+  useEffect(() => {
+    getUser()
+  }, [])
+
   return (
     <GlobalContext.Provider
       value={{
         globalState,
         setGlobalState
       }}
-    ></GlobalContext.Provider>
+    >
+      {loading
+        ? (
+        <Loader />
+          )
+        : user
+          ? (
+        <ProtectedRoutes />
+            )
+          : (
+        <UnprotectedRoutes />
+            )}
+    </GlobalContext.Provider>
   )
 }
 
