@@ -1,13 +1,11 @@
 import { AUTH_USER } from '../constants'
 
-export const getFromLocal = (key) => {
-  const value = localStorage.getItem(key)
-
-  if (value) {
-    return JSON.parse(value)
+export const getFromLocal = (itemName) => {
+  const fromLocal = localStorage.getItem(itemName)
+  if (!fromLocal) {
+    return
   }
-
-  return null
+  return JSON.parse(fromLocal)
 }
 
 export const storeLocally = (key, value) => {
@@ -15,11 +13,8 @@ export const storeLocally = (key, value) => {
 }
 
 export const getUserFromLocal = () => {
-  return new Promise((resolve, reject) => {
-    const user = getFromLocal(AUTH_USER)
-
-    if (user) {
-      resolve(user)
-    }
+  const user = getFromLocal(AUTH_USER)
+  return new Promise(function (resolve, reject) {
+    resolve(user)
   })
 }

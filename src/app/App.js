@@ -20,9 +20,11 @@ const App = () => {
         if (user) {
           setUser(user)
           updateGlobalState({ user })
+          setLoading(false)
         }
 
         setUser(null)
+        setLoading(false)
       })
       .finally(() => {
         setLoading(false)
