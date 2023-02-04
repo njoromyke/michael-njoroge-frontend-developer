@@ -36,7 +36,8 @@ const App = () => {
   }, [])
 
   return (
-    <GlobalContext.Provider
+    <div id='main'>
+      <GlobalContext.Provider
       value={{
         globalState,
         setGlobalState
@@ -54,6 +55,7 @@ const App = () => {
         <UnprotectedRoutes />
               )}
     </GlobalContext.Provider>
+    </div>
   )
 }
 
