@@ -18,7 +18,7 @@ const authUser = async (req, res) => {
     })
   } else {
     res.status(401)
-    throw new Error('Invalid email or password')
+    res.json({ message: 'Invalid email or password' })
   }
 }
 
@@ -33,7 +33,7 @@ const registerUser = async (req, res) => {
 
   if (user) {
     res.status(400)
-    throw new Error('User already exists')
+    res.json({ message: 'User already exists' })
   }
 
   const newUser = await User.create({
@@ -49,7 +49,7 @@ const registerUser = async (req, res) => {
     })
   } else {
     res.status(400)
-    throw new Error('Invalid user data')
+    res.json({ message: 'Invalid user data' })
   }
 }
 
